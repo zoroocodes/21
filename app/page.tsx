@@ -44,12 +44,11 @@ const TextGenerateEffect = ({
       <motion.div ref={scope}>
         {wordsArray.map((word, idx) => {
           return (
-            <motion.span<HTMLSpanElement>
-            key={word + idx}
-            className="text-white opacity-0"
-            style={{ filter: filter ? "blur(10px)" : "none" }}
-          >
-          
+            <motion.span
+              key={word + idx}
+              style={{ filter: filter ? "blur(10px)" : "none" }}
+              {...({ className: "text-white opacity-0" } as React.HTMLAttributes<HTMLSpanElement>)}
+            >
               {word}{" "}
             </motion.span>
           );
