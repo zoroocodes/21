@@ -42,19 +42,17 @@ const TextGenerateEffect = ({
   const renderWords = () => {
     return (
       <motion.div ref={scope}>
-        {wordsArray.map((word, idx) => {
-          return (
-            <motion.span
-              key={word + idx}
-              style={{ filter: filter ? "blur(10px)" : "none" }}
-              {...({ className: "text-white opacity-0" } as React.HTMLAttributes<HTMLSpanElement>)}
-            >
-              {word}{" "}
-            </motion.span>
-          );
-        })}
-      </motion.div>
-    );
+      {wordsArray.map((word, idx) => {
+        const spanProps: HTMLMotionProps<"span"> = {
+          key: word + idx,
+          className: "text-white opacity-0",
+          style: { filter: filter ? "blur(10px)" : "none" },
+        };
+  
+        return <motion.span {...spanProps}>{word}{" "}</motion.span>;
+      })}
+    </motion.div>
+  );
   };
 
   return (
